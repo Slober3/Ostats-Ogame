@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Graph</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/stylev2.css" rel="stylesheet">
+	
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	
+
+  </head>
+  <body>
+
+    <div class="container-fluid ">
+	<div class="row mar">
+		<div class="col-md-2 ">
+		</div>
+		<div class="col-md-8 pad">
+<h1><span class="blue">&lt;</span>Ostats<span class="blue">&gt;</span> <span class="yellow"> Small footprint, Ogame stat Graph for Xalynth NL!</pan></h1>
+
+<br/>
+
+<div class="form-horizontal top-buffer">
+<fieldset>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="ipInput">Enter player name</label>  
+  <div class="col-md-4">
+  <input id="ipInput" name="ipInput" type="text" placeholder="ex. Takumi" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="serachip">Search Player</label>
+  <div class="col-md-4">
+    <button id="serachip" name="serachip" onclick="getIP()" class="btn btn-primary">Search</button>
+  </div>
+</div>
+
+</fieldset>
+</div>
+
+    <div id="Total"></div>
+
+    <div id="Eco"></div>
+
+	<div id="Mil"></div>
+
+	<div id="Re"></div>
+
+			
+		</div>
+		<div class="col-md-2 ">
+		</div>
+	<div class="row mar">
+		<div class="col-md-2 ">
+		</div>
+		<div class="col-md-8 ">
+<span class="site-footer-owner"><a href="http://herexaam.be/Ostats/">Ostats</a> is a work in progress. This site and project is maintained by <a href="https://github.com/Slober3">Takumi</a>.</span>
+
+		</div>
+		<div class="col-md-2 ">
+		</div>
+</div>
+	</div>
+	<script language="JavaScript" type="text/javascript" src="js/scriptv2.js"></script>
+
+  </body>
+</html>
