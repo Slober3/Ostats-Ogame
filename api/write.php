@@ -70,6 +70,10 @@ $xml_mil = simplexml_load_file($url_mil);
 
 
 $max = sizeof($xml_total);
+$maxE = sizeof($xml_total);
+$maxR = sizeof($xml_total);
+$maxM = sizeof($xml_total);
+
 
 $id="id";
 $score="score";
@@ -89,9 +93,7 @@ usort($treesr, 'sort_player');
 
 for($i = 0; $i < $max;$i++)
 {
-
 try{
-
 	$stmt = $dbh->prepare("INSERT INTO highscores (player_id, total,economy,research,military) VALUES (:player_id, :total, :economy, :research, :military)");
 	$stmt->bindParam(':player_id', $treest[$i]->attributes()->$id);
 	$stmt->bindParam(':total', $treest[$i]->attributes()->$score);
@@ -108,10 +110,65 @@ catch(PDOException $e)
     {
     echo $stmt . "<br>" . $e->getMessage();
     }
-
-
-
 }
+
+//ECO
+for($i = 0; $i < $maxE;$i++)
+{
+try{
+	$stmt = $dbh->prepare("UPDATE highscores SET economy = :economy WHERE player_id = :player_id ORDER BY id DESC LIMIT 1");
+	$stmt->bindParam(':player_id', $treese[$i]->attributes()->$id);
+	$stmt->bindParam(':economy', $treese[$i]->attributes()->$score);
+
+    // use exec() because no results are returned
+    $stmt->execute();
+
+    echo "New record created successfully";
+    }
+catch(PDOException $e)
+    {
+    echo $stmt . "<br>" . $e->getMessage();
+    }
+}
+
+//ONDERZOEK
+for($i = 0; $i < $maxR;$i++)
+{
+try{
+	$stmt = $dbh->prepare("UPDATE highscores SET research = :research WHERE player_id = :player_id ORDER BY id DESC LIMIT 1");
+	$stmt->bindParam(':player_id', $treesr[$i]->attributes()->$id);
+	$stmt->bindParam(':research', $treesr[$i]->attributes()->$score);
+
+    // use exec() because no results are returned
+    $stmt->execute();
+
+    echo "New record created successfully";
+    }
+catch(PDOException $e)
+    {
+    echo $stmt . "<br>" . $e->getMessage();
+    }
+}
+
+//MILITAIR
+for($i = 0; $i < $maxM;$i++)
+{
+try{
+	$stmt = $dbh->prepare("UPDATE highscores SET military = :military WHERE player_id = :military ORDER BY id DESC LIMIT 1");
+	$stmt->bindParam(':player_id', $treesm[$i]->attributes()->$id);
+	$stmt->bindParam(':military', $treesm[$i]->attributes()->$score);
+
+    // use exec() because no results are returned
+    $stmt->execute();
+
+    echo "New record created successfully";
+    }
+catch(PDOException $e)
+    {
+    echo $stmt . "<br>" . $e->getMessage();
+    }
+}
+
 
 $dbh = null;
 

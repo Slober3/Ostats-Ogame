@@ -3,6 +3,12 @@
 	var military = [];
 	var research = [];
 $('#text').hide();
+$('#main').hide();
+
+$('#Total').hide();
+$('#Eco').hide();
+$('#Mil').hide();
+$('#Re').hide();
 
 var VerhaalPos = [
   ["Wauw wat een productieve dag is het voor jou!", "Je doet het goed Verder doen!", "Zo zo flink gestegen!", "Zie die puntjes maar rollen!"],
@@ -93,10 +99,17 @@ $('#text').show();
    }
    
 function drawCurveTypes() {
+$('#Total').hide();
+$('#Eco').hide();
+$('#Mil').hide();
+$('#Re').hide();
+$('#main').hide();
+
 $('#Total').empty();
 $('#Eco').empty();
 $('#Mil').empty();
 $('#Re').empty();
+
 
 
       var data = new google.visualization.DataTable();
@@ -116,7 +129,7 @@ $('#Re').empty();
 	  
 	  var researchd = new google.visualization.DataTable();
       researchd.addColumn('number', 'X');
-      researchd.addColumn('number', 'researchd');
+      researchd.addColumn('number', 'Research');
       researchd.addRows(research);
 	 
 		items = [];
@@ -133,8 +146,15 @@ $('#Re').empty();
         },
         series: {
           1: {curveType: 'function'}
-        }
+        },
+		width: '100%'
       };
+$('#main').show();
+
+$('#Total').show();
+$('#Eco').show();
+$('#Mil').show();
+$('#Re').show();
 
       var chart = new google.visualization.LineChart(document.getElementById('Total'));
       chart.draw(data, options);
@@ -142,12 +162,13 @@ $('#Re').empty();
 	  var charte = new google.visualization.LineChart(document.getElementById('Eco'));
       charte.draw(economyd, options);
 	  
-	  var chartm = new google.visualization.LineChart(document.getElementById('Mil'));
-      chartm.draw(militaryd, options);
-	  
 	  var chartr = new google.visualization.LineChart(document.getElementById('Re'));
       chartr.draw(researchd, options);
 	  
+	  var chartm = new google.visualization.LineChart(document.getElementById('Mil'));
+      chartm.draw(militaryd, options);
+	  
+
 	  chart=null;
 	  charte=null;
 	  chartm=null;
@@ -157,6 +178,5 @@ $('#Re').empty();
 	military = [];
 	research = [];
 
-	  
     }
 	
